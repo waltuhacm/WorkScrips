@@ -1,0 +1,1 @@
+"\\dataserv\Installers\Deployed\PDQ\VMWare Pro\VMware-workstation-full-17.5.2-23775571.exe" /s /v/qn REBOOT=ReallySuppress EULAS_AGREED=1 DESKTOP_SHORTCUT=0 SERIALNUMBER="FH63Q-ACKDJ-08JQT-0P30K-C1NJM"

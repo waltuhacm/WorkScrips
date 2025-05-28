@@ -1,0 +1,1 @@
+"\\dataserv\Installers\Deployed\PDQ\MS Office 365\setup.exe" /configure "\\dataserv\Installers\Deployed\PDQ\MS Office 365\Visio.xml"
