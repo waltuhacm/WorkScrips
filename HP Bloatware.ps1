@@ -61,12 +61,12 @@ $UninstallPrograms = @(
 $HPidentifier = "AD2F1837"
 
 $InstalledPackages = Get-AppxPackage -AllUsers `
-            | Where-Object {($UninstallPackages -contains $_.Name) -or ($_.Name -match "^$HPidentifier")}
+| Where-Object { ($UninstallPackages -contains $_.Name) -or ($_.Name -match "^$HPidentifier") }
 
 $ProvisionedPackages = Get-AppxProvisionedPackage -Online `
-            | Where-Object {($UninstallPackages -contains $_.DisplayName) -or ($_.DisplayName -match "^$HPidentifier")}
+| Where-Object { ($UninstallPackages -contains $_.DisplayName) -or ($_.DisplayName -match "^$HPidentifier") }
 
-$InstalledPrograms = Get-Package | Where-Object {$UninstallPrograms -contains $_.Name}
+$InstalledPrograms = Get-Package | Where-Object { $UninstallPrograms -contains $_.Name }
 
 # Remove appx provisioned packages - AppxProvisionedPackage
 ForEach ($ProvPackage in $ProvisionedPackages) {
@@ -77,7 +77,7 @@ ForEach ($ProvPackage in $ProvisionedPackages) {
         $Null = Remove-AppxProvisionedPackage -PackageName $ProvPackage.PackageName -Online -ErrorAction Stop
         Write-Host -Object "Successfully removed provisioned package: [$($ProvPackage.DisplayName)]"
     }
-    Catch {Write-Warning -Message "Failed to remove provisioned package: [$($ProvPackage.DisplayName)]"}
+    Catch { Write-Warning -Message "Failed to remove provisioned package: [$($ProvPackage.DisplayName)]" }
 }
 
 # Remove appx packages - AppxPackage
@@ -89,7 +89,7 @@ ForEach ($AppxPackage in $InstalledPackages) {
         $Null = Remove-AppxPackage -Package $AppxPackage.PackageFullName -AllUsers -ErrorAction Stop
         Write-Host -Object "Successfully removed Appx package: [$($AppxPackage.Name)]"
     }
-    Catch {Write-Warning -Message "Failed to remove Appx package: [$($AppxPackage.Name)]"}
+    Catch { Write-Warning -Message "Failed to remove Appx package: [$($AppxPackage.Name)]" }
 }
 
 # Remove installed programs
@@ -101,7 +101,7 @@ $InstalledPrograms | ForEach-Object {
         $Null = $_ | Uninstall-Package -AllVersions -Force -ErrorAction Stop
         Write-Host -Object "Successfully uninstalled: [$($_.Name)]"
     }
-    Catch {Write-Warning -Message "Failed to uninstall: [$($_.Name)]"}
+    Catch { Write-Warning -Message "Failed to uninstall: [$($_.Name)]" }
 }
 
 # Fallback attempt 1 to remove HP Wolf Security using msiexec

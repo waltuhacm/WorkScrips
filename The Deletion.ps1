@@ -8,68 +8,68 @@ Write-Host 'Time to delet! >:^)'
 
 Write-Host 'First, the easy ones :)'
 
-$AppsList = 
-'26830TonyLin.SensorInfo',
-'AD2F1837.HPPrivacySettings',
-'AD2F1837.HPSystemInformation',
-'AD2F1837.HPEasyClean',
-'AD2F1837.HPPowerManager',
-'AD2F1837.myHP',
-'AppUp.IntelConnectivityPerformanceSuite',
-'AppUp.IntelManagementandSecurityStatus',
-'Clipchamp.Clipchamp',
-'DolbyLaboratories.DolbyAccess',
-'Microsoft.549981C3F5F10', #Cortana
-'Microsoft.3DBuilder',
-'Microsoft.BingFinance',
-'Microsoft.BingNews',
-'Microsoft.BingSports',
-'Microsoft.BingWeather',
-'Microsoft.GetHelp',
-'Microsoft.Getstarted',
-'Microsoft.Messaging',
-'Microsoft.MicrosoftSolitaireCollection',
-'Microsoft.Microsoft3DViewer',
-'Microsoft.OneConnect',
-'Microsoft.People',
-'Microsoft.SkypeApp',
-'Microsoft.MixedReality.Portal',
-'Microsoft.Office.OneNote',
-'Microsoft.SensorExplorer',
-'Microsoft.OutlookForWindows',
-'MicrosoftWindows.Client.CBS', #(Get Started)
-'microsoft.windowscommunicationsapps',
-'Microsoft.WindowsFeedbackHub',
-'Microsoft.XboxApp',
-'Microsoft.XboxGamingOverlay',
-'Microsoft.XboxIdentityProvider',
-'Microsoft.YourPhone',
-'Microsoft.ZuneMusic',
-'Microsoft.ZuneVideo',
-'RealtekSemiconductorCorp.HPAudioControl',
-'MirametrixInc.GlancebyMirametrix',
-'E046963F.cameraSettings', (#Lenovo View)
-'C:\Program Files\HP\HP Client Security Manager\HP.ClientSecurityManager.exe',
-'MicrosoftCorporationII.QuickAssist',
-'Microsoft.GamingApp'
+$AppsList = (
+    '26830TonyLin.SensorInfo',
+    'AD2F1837.HPPrivacySettings',
+    'AD2F1837.HPSystemInformation',
+    'AD2F1837.HPEasyClean',
+    'AD2F1837.HPPowerManager',
+    'AD2F1837.myHP',
+    'AppUp.IntelConnectivityPerformanceSuite',
+    'AppUp.IntelManagementandSecurityStatus',
+    'Clipchamp.Clipchamp',
+    'DolbyLaboratories.DolbyAccess',
+    'Microsoft.549981C3F5F10', #Cortana
+    'Microsoft.3DBuilder',
+    'Microsoft.BingFinance',
+    'Microsoft.BingNews',
+    'Microsoft.BingSports',
+    'Microsoft.BingWeather',
+    'Microsoft.GetHelp',
+    'Microsoft.Getstarted',
+    'Microsoft.Messaging',
+    'Microsoft.MicrosoftSolitaireCollection',
+    'Microsoft.Microsoft3DViewer',
+    'Microsoft.OneConnect',
+    'Microsoft.People',
+    'Microsoft.SkypeApp',
+    'Microsoft.MixedReality.Portal',
+    'Microsoft.Office.OneNote',
+    'Microsoft.SensorExplorer',
+    'Microsoft.OutlookForWindows',
+    'MicrosoftWindows.Client.CBS', #Get Started
+    'microsoft.windowscommunicationsapps',
+    'Microsoft.WindowsFeedbackHub',
+    'Microsoft.XboxApp',
+    'Microsoft.XboxGamingOverlay',
+    'Microsoft.XboxIdentityProvider',
+    'Microsoft.YourPhone',
+    'Microsoft.ZuneMusic',
+    'Microsoft.ZuneVideo',
+    'RealtekSemiconductorCorp.HPAudioControl',
+    'MirametrixInc.GlancebyMirametrix',
+    'E046963F.cameraSettings', #Lenovo View
+    'C:\Program Files\HP\HP Client Security Manager\HP.ClientSecurityManager.exe',
+    'MicrosoftCorporationII.QuickAssist',
+    'Microsoft.GamingApp'
 )
-ForEach ($App in $AppsList){
+ForEach ($App in $AppsList) {
     $PackageFullName = (Get-AppxPackage $App).PackageFullName
-    $ProPackageFullName = (Get-AppxProvisionedPackage -online | Where-Object {$_.Displayname -eq $App}).PackageName
+    $ProPackageFullName = (Get-AppxProvisionedPackage -online | Where-Object { $_.Displayname -eq $App }).PackageName
     write-host $PackageFullName
     Write-Host $ProPackageFullName
-    if ($PackageFullName){
+    if ($PackageFullName) {
         Write-Host Removing Package: $App
         remove-AppxPackage -package $PackageFullName
     }
-    else{
+    else {
         Write-Host Unable to find package: $App
     }
-    if ($ProPackageFullName){
+    if ($ProPackageFullName) {
         Write-Host Removing Provisioned Package: $ProPackageFullName
         Remove-AppxProvisionedPackage -online -packagename $ProPackageFullName
     }
-    else{
+    else {
         Write-Host Unable to find provisioned package: $App
     }
 }
@@ -138,5 +138,5 @@ Write-Host 'Brute Force/Special File Path Needed'
 & "C:\Program Files (x86)\Lenovo\System Update\unins000.exe" /SILENT
 #--------------------------------------------------------------------------------
 
- Write-Host '#Back to smol boi... Bye Bye!'
+Write-Host '#Back to smol boi... Bye Bye!'
 Set-ExecutionPolicy Restricted -Scope LocalMachine -Force
