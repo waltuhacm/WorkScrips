@@ -10,7 +10,7 @@ Add-WUServiceManager -MicrosoftUpdate
 
 powercfg.exe -change -standby-timeout-ac 0
 
-&'The Deletion.ps1'
+& '\\dataserv\Installers\Device Setup\Scrips\TheDeletion.ps1'
 
 function Prompt-AppInstall {
     do {
@@ -26,7 +26,7 @@ function Prompt-AppInstall {
 if (-not (Prompt-AppInstall)) {
     # Skip to update section
     Write-Host 'Skipping application installation...'
-    goto UpdateSection
+     UpdateSection
 }
 #--------------------------------------------------------------------------------
 Write-Host 'Time to install some apps!'
@@ -40,7 +40,7 @@ if ($manufacturer -like 'Microsoft*') {
 }
 if ($manufacturer -like 'Lenovo*') {
     write-host 'Installing Commercial Vantage...'
-    & '\\dataserv\Installers\Device Setup\Scrips\Lenovo Commercial Vantage Install.bat.lnk'
+    & '\\dataserv\Installers\Device Setup\Scrips\CommercialVantage.bat.lnk'
 }
 if ($manufacturer -like 'HP*') {
     write-host 'Installing Support Assisstant & PC Hardware Diagnostics...'
@@ -53,7 +53,7 @@ do {
     $input = Read-Host 'Is this going to be a loaner laptop? [y/n]'
     switch ($input.ToLower()) {
         'y' {
-            & '\\dataserv\Installers\Device Setup\Scrips\VMWare Pro 17 Install.bat'
+            & '\\dataserv\Installers\Device Setup\Scrips\VMWarePro17.bat'
             $valid = $true
         }
         'n' {
@@ -76,7 +76,7 @@ Install-WindowsUpdate -MicrosoftUpdate -AcceptAll | Out-File 'C:\($env.computern
 #-AutoReboot
 #--------------------------------------------------------------------------------
 Write-Host 'Last but not least, installing the base standard set of applications...'
-& '\\dataserv\Installers\Device Setup\Scrips\Base Apps Install.bat'
+& '\\dataserv\Installers\Device Setup\Scrips\BaseApps.bat'
 #--------------------------------------------------------------------------------
 Write-Host 'Bye Bye!'
 Set-ExecutionPolicy Restricted -Scope LocalMachine -Force
