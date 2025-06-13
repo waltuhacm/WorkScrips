@@ -19,3 +19,5 @@ msiexec /i "\\dataserv\Installers\Deployed\PDQ\SentinelOne\SentinelInstaller_win
 msiexec /i "\\dataserv\Installers\Deployed\PDQ\Zscaler\Zscaler-windows-3.7.1.54-installer-x64.msi" ALLUSERS=1 /qn /norestart /log output.log /quiet POLICYTOKEN="343934353A333A37343665623537312D346163632D343231622D393061312D303665323035353335313533" CLOUDNAME="zscaler" STRICTENFORCEMENT=1 USERDOMAIN="koerber.com"
 
 "C:\Program Files (x86)\TeamViewer\TeamViewer.exe" assignment --id 0001CoABChAM7UQA3hwR7YxII1ESUwtfEigIACAAAgAJAHQ6gwWWBGgZkPflZM-135qp3Zl60ddpMbZBzelx5YbnGkDg-C8OqX_1gDJfQiVagtmcXNWgJnwkWQ3bzk5vYWLkZloPWnp0IfXwUMI1kAl0hULseQCgSz3QOdWs_u53o_1fIAEQ-eGiigs=
+
+"C:\Program Files\TeamViewer\TeamViewer.exe" assignment --id 0001CoABChAM7UQA3hwR7YxII1ESUwtfEigIACAAAgAJAHQ6gwWWBGgZkPflZM-135qp3Zl60ddpMbZBzelx5YbnGkDg-C8OqX_1gDJfQiVagtmcXNWgJnwkWQ3bzk5vYWLkZloPWnp0IfXwUMI1kAl0hULseQCgSz3QOdWs_u53o_1fIAEQ-eGiigs=
